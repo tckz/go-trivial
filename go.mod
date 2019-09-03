@@ -13,5 +13,8 @@ require (
 	github.com/pkg/errors v0.8.1
 	github.com/samclarke/robotstxt v0.0.0-20171127213916-2817654b7988
 	github.com/yuin/gopher-lua v0.0.0-20190206043414-8bfc7677f583 // indirect
+	go.uber.org/atomic v1.4.0 // indirect
+	go.uber.org/multierr v1.1.0 // indirect
+	go.uber.org/zap v1.10.0
 	golang.org/x/net v0.0.0-20190503192946-f4e77d36d62c // indirect
 )
