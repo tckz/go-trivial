@@ -12,6 +12,7 @@ require (
 	github.com/jmespath/go-jmespath v0.0.0-20180206201540-c2b33e8439af // indirect
 	github.com/pkg/errors v0.8.1
 	github.com/samclarke/robotstxt v0.0.0-20171127213916-2817654b7988
+	github.com/sirupsen/logrus v1.4.2
 	github.com/yuin/gopher-lua v0.0.0-20190206043414-8bfc7677f583 // indirect
 	go.uber.org/atomic v1.4.0 // indirect
 	go.uber.org/multierr v1.1.0 // indirect
