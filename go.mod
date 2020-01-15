@@ -8,14 +8,17 @@ require (
 	github.com/aws/aws-sdk-go v1.6.27
 	github.com/garyburd/redigo v1.0.0
 	github.com/go-ini/ini v1.42.0 // indirect
+	github.com/golang/protobuf v1.3.2
 	github.com/gomodule/redigo v2.0.0+incompatible // indirect
+	github.com/grpc-ecosystem/go-grpc-middleware v1.1.0 // indirect
 	github.com/jmespath/go-jmespath v0.0.0-20180206201540-c2b33e8439af // indirect
 	github.com/pkg/errors v0.8.1
 	github.com/samclarke/robotstxt v0.0.0-20171127213916-2817654b7988
 	github.com/sirupsen/logrus v1.4.2
 	github.com/yuin/gopher-lua v0.0.0-20190206043414-8bfc7677f583 // indirect
-	go.uber.org/atomic v1.4.0 // indirect
-	go.uber.org/multierr v1.1.0 // indirect
 	go.uber.org/zap v1.10.0
-	golang.org/x/net v0.0.0-20190503192946-f4e77d36d62c // indirect
+	golang.org/x/lint v0.0.0-20190313153728-d0100b6bd8b3 // indirect
+	golang.org/x/tools v0.0.0-20190524140312-2c0ae7006135 // indirect
+	google.golang.org/grpc v1.26.0
+	honnef.co/go/tools v0.0.0-20190523083050-ea95bdfd59fc // indirect
 )
