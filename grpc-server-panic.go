@@ -94,4 +94,7 @@ func main() {
 	log.Print("without recovery")
 	server = grpc.NewServer()
 	tryRequestSet(server)
+
+	// ゴールしない
+	log.Printf("Goal!!")
 }
