@@ -8,6 +8,7 @@ require (
 	github.com/aws/aws-sdk-go v1.6.27
 	github.com/garyburd/redigo v1.0.0
 	github.com/go-ini/ini v1.42.0 // indirect
+	github.com/go-redis/redis v6.15.6+incompatible
 	github.com/golang/protobuf v1.3.2
 	github.com/gomodule/redigo v2.0.0+incompatible // indirect
 	github.com/grpc-ecosystem/go-grpc-middleware v1.1.0
