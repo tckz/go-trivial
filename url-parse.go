@@ -7,9 +7,9 @@ import (
 
 func print(index int, u *url.URL, err error) {
 	if err == nil {
-		fmt.Printf("url[%d]=%v, query=%v\n", index, u, u.Query())
+		fmt.Printf("url[%d]=%v, path=%s, query=%v\n", index, u, u.Path, u.Query())
 	} else {
-		fmt.Printf("url[%d]=%v, err=%v\n", index, u, err)
+		fmt.Printf("url[%d]=%v, path=%s, err=%v\n", index, u, u.Path, err)
 	}
 }
 
@@ -24,5 +24,14 @@ func main() {
 
 	u, err = url.Parse("")
 	print(2, u, err)
+
+	u, err = url.Parse("https://www.example.jp")
+	print(3, u, err)
+
+	u, err = url.Parse("https://www.example.jp/")
+	print(4, u, err)
+
+	u, err = url.Parse("https://www.example.jp/path/to")
+	print(5, u, err)
 
 }
