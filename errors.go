@@ -17,6 +17,10 @@ func main() {
 	err1 := errors.Wrapf(wrapped1st, "%+v", wrapped2nd)
 	err2 := errors.Wrapf(wrapped1st, "%v", wrapped2nd)
 
-	fmt.Fprintf(os.Stderr, "====\n%+v\n", err1)
-	fmt.Fprintf(os.Stderr, "====\n%+v\n", err2)
+	fmt.Fprintf(os.Stderr, "====1.wrapped1st %%s\n%s\n", wrapped1st)
+	fmt.Fprintf(os.Stderr, "====1.wrapped1st %%v\n%v\n", wrapped1st)
+	fmt.Fprintf(os.Stderr, "====1.wrapped1st %%+v\n%+v\n", wrapped1st)
+
+	fmt.Fprintf(os.Stderr, "====3.err1 %%+v\n%+v\n", err1)
+	fmt.Fprintf(os.Stderr, "====4.err2 %%+v\n%+v\n", err2)
 }
