@@ -16,4 +16,12 @@ func main() {
 	s := &Some{}
 	fmt.Fprintf(os.Stderr, "nil?=%v, v=%v\n", s.MapBool == nil, s.MapBool["who?"])
 	fmt.Fprintf(os.Stderr, "nil?=%v, v=%v\n", s.MapString == nil, s.MapString["wao!"])
+
+	// mapのmap
+	m := map[string]map[string]string{
+		"key": map[string]string{},
+	}
+	fmt.Fprintf(os.Stderr, "empty?=%v, v=%v\n", m["key"]["not_exist"] == "", m["key"]["not_exist"])
+	// 最初の階層で存在しないキーを参照してさらにその配下を参照->普通に参照できる。指定キーが存在しない扱いのようだ
+	fmt.Fprintf(os.Stderr, "empty?=%v, v=%v\n", m["not_exist"]["not_exist2"] == "", m["not_exist"]["not_exist2"])
 }
