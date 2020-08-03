@@ -51,6 +51,7 @@ func main() {
 		var rec TZSample
 		err = db.Where("id = ?", *optID).Find(&rec).Error
 		if err != nil {
+			fmt.Fprintf(os.Stderr, "gorm.ErrRecordNotFound? = %t: %T\n", err == gorm.ErrRecordNotFound, err)
 			panic(err)
 		}
 		fmt.Fprintf(os.Stderr, "%+v\n", rec)
