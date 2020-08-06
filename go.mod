@@ -6,6 +6,7 @@ require (
 	github.com/alicebob/gopher-json v0.0.0-20180125190556-5a6b3ba71ee6 // indirect
 	github.com/alicebob/miniredis v2.5.0+incompatible
 	github.com/aws/aws-sdk-go v1.32.1
+	github.com/aws/aws-sdk-go-v2 v0.24.0
 	github.com/garyburd/redigo v1.0.0
 	github.com/go-ini/ini v1.42.0 // indirect
 	github.com/go-redis/redis v6.15.6+incompatible
