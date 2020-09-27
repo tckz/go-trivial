@@ -7,6 +7,7 @@ require (
 	github.com/alicebob/miniredis v2.5.0+incompatible
 	github.com/aws/aws-sdk-go v1.32.1
 	github.com/aws/aws-sdk-go-v2 v0.24.0
+	github.com/aws/aws-xray-sdk-go v1.1.0
 	github.com/garyburd/redigo v1.0.0
 	github.com/go-ini/ini v1.42.0 // indirect
 	github.com/go-redis/redis v6.15.6+incompatible
@@ -18,6 +19,8 @@ require (
 	github.com/pkg/errors v0.9.1
 	github.com/samclarke/robotstxt v0.0.0-20171127213916-2817654b7988
 	github.com/sirupsen/logrus v1.4.2
+	github.com/tckz/vegetahelper v0.0.2
+	github.com/tsenart/vegeta v12.3.0+incompatible
 	github.com/yuin/gopher-lua v0.0.0-20190206043414-8bfc7677f583 // indirect
 	go.uber.org/zap v1.10.0
 	google.golang.org/grpc v1.31.1
