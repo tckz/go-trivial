@@ -12,5 +12,5 @@ func main() {
 	}
 
 	// Newした段階でreq.Responseがnilかどうかを知りたい -> nilになってる
-	log.Printf("req=%#v\b", req)
+	log.Printf("req=%#v", req)
 }

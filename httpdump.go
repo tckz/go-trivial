@@ -21,7 +21,7 @@ func main() {
 	optBind := flag.String("bind", ":8082", "Listen addr:port")
 	flag.Parse()
 
-	log.Printf("Bind: %s\n", *optBind)
+	log.Printf("Bind: %s", *optBind)
 
 	lis, err := net.Listen("tcp", *optBind)
 	if err != nil {
@@ -63,7 +63,7 @@ func main() {
 	signal.Notify(sig, syscall.SIGINT)
 
 	s := <-sig
-	log.Printf("Received signal: %s\n", s)
+	log.Printf("Received signal: %s", s)
 
 	ctx, cancel := context.WithTimeout(context.Background(), 2*time.Second)
 	srv.Shutdown(ctx)

@@ -152,7 +152,7 @@ loop:
 	for {
 		select {
 		case s := <-sig:
-			log.Printf("Received signal: %s\n", s)
+			log.Printf("Received signal: %s", s)
 			cancel()
 			// keep loop until 'res' is closed.
 		case r, ok := <-res:
@@ -160,7 +160,7 @@ loop:
 				break loop
 			}
 			if err := enc.Encode(r); err != nil {
-				log.Printf("*** Encode: %v\n", err)
+				log.Printf("*** Encode: %v", err)
 				break loop
 			}
 		}

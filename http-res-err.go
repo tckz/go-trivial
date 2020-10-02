@@ -26,7 +26,7 @@ func main() {
 	// 500応答でもerrではない、という確認
 	res, err := http.PostForm(testServer.URL, vals)
 	if err != nil {
-		log.Printf("err=%v\n", err)
+		log.Printf("err=%v", err)
 		return
 	}
 
@@ -34,7 +34,7 @@ func main() {
 
 	dump, err := httputil.DumpResponse(res, true)
 	if err != nil {
-		log.Fatalf("*** httputil.DumpResponse: %v\n", err)
+		log.Fatalf("*** httputil.DumpResponse: %v", err)
 	}
 
 	fmt.Println(string(dump))
