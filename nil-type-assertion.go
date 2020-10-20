@@ -17,7 +17,11 @@ func main() {
 
 	// nilであってもpanicしない
 	v := v1().(*someType)
-	fmt.Fprintf(os.Stderr, "v=%v\n", v)
+	fmt.Fprintf(os.Stderr, "[0]v=%v\n", v)
+
+	// nilであっても型があえばok=true
+	v, ok := v1().(*someType)
+	fmt.Fprintf(os.Stderr, "[1]v=%v, ok=%t\n", v, ok)
 
 	// 型が合わなくてもokを受ければpanicせず判定できる
 	func() {
@@ -27,7 +31,7 @@ func main() {
 			}
 		}()
 		v, ok := v1().(*someType2)
-		fmt.Fprintf(os.Stderr, "v=%v, ok=%t\n", v, ok)
+		fmt.Fprintf(os.Stderr, "[3]v=%v, ok=%t\n", v, ok)
 	}()
 
 	// 型が合わないとpanic
@@ -38,6 +42,6 @@ func main() {
 			}
 		}()
 		v := v1().(*someType2)
-		fmt.Fprintf(os.Stderr, "v=%v\n", v)
+		fmt.Fprintf(os.Stderr, "[4]v=%v\n", v)
 	}()
 }
