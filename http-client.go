@@ -33,8 +33,9 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+	defer res.Body.Close()
 
-	b, err := httputil.DumpRequest(req, true)
+	b, err := httputil.DumpRequestOut(req, true)
 	if err != nil {
 		panic(err)
 	}
