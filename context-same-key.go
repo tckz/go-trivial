@@ -16,5 +16,6 @@ func main() {
 	ctx = context.WithValue(ctx, ctxKey, "2")
 	ctx = context.WithValue(ctx, ctxKey, "3")
 
-	fmt.Fprintf(os.Stderr, "%s\n", ctx.Value(ctxKey))
+	// val=3
+	fmt.Fprintf(os.Stderr, "val=%s\n", ctx.Value(ctxKey))
 }
