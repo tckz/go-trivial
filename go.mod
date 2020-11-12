@@ -16,6 +16,7 @@ require (
 	github.com/gomodule/redigo v2.0.0+incompatible // indirect
 	github.com/grpc-ecosystem/go-grpc-middleware v1.2.1
 	github.com/jinzhu/gorm v1.9.12
+	github.com/line/line-bot-sdk-go v7.6.0+incompatible // indirect
 	github.com/pkg/errors v0.9.1
 	github.com/samclarke/robotstxt v0.0.0-20171127213916-2817654b7988
 	github.com/sirupsen/logrus v1.4.2
