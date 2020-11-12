@@ -21,6 +21,8 @@ func main() {
 	fmt.Printf("[:5]=%v\n", r(func() interface{} { return a[:5] }))
 	// [:6]=runtime error: slice bounds out of range [:6] with capacity 5
 	fmt.Printf("[:6]=%v\n", r(func() interface{} { return a[:6] }))
+	// [6:]=runtime error: slice bounds out of range [6:5]
+	fmt.Printf("[6:]=%v\n", r(func() interface{} { return a[6:] }))
 	// [:]=[11 12 13 14 15]
 	fmt.Printf("[:]=%v\n", r(func() interface{} { return a[:] }))
 	// [0:2]=[11 12]
