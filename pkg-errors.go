@@ -20,14 +20,14 @@ func main() {
 	/*
 		1st error
 		main.main
-		        /home/aki/go/src/github.com/tckz/trivial/errors.go:11
+		        /home/aki/go/src/github.com/tckz/go-trivial/errors.go:11
 		runtime.main
 		        /home/aki/go1.13/src/runtime/proc.go:203
 		runtime.goexit
 		        /home/aki/go1.13/src/runtime/asm_amd64.s:1357
 		*** Failed to 1st
 		main.main
-		        /home/aki/go/src/github.com/tckz/trivial/errors.go:12
+		        /home/aki/go/src/github.com/tckz/go-trivial/errors.go:12
 		runtime.main
 		        /home/aki/go1.13/src/runtime/proc.go:203
 		runtime.goexit

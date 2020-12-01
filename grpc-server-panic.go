@@ -10,7 +10,7 @@ import (
 	"github.com/golang/protobuf/ptypes/timestamp"
 	grpc_middleware "github.com/grpc-ecosystem/go-grpc-middleware"
 	grpc_recovery "github.com/grpc-ecosystem/go-grpc-middleware/recovery"
-	"github.com/tckz/trivial/api"
+	"github.com/tckz/go-trivial/api"
 	"google.golang.org/grpc"
 )
 

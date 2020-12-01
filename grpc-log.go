@@ -9,7 +9,7 @@ import (
 	grpc_middleware "github.com/grpc-ecosystem/go-grpc-middleware"
 	grpc_zap "github.com/grpc-ecosystem/go-grpc-middleware/logging/zap"
 	grpc_recovery "github.com/grpc-ecosystem/go-grpc-middleware/recovery"
-	"github.com/tckz/trivial/api"
+	"github.com/tckz/go-trivial/api"
 	"go.uber.org/zap"
 	"google.golang.org/grpc"
 )

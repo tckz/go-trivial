@@ -1,4 +1,4 @@
-module github.com/tckz/trivial
+module github.com/tckz/go-trivial
 
 go 1.12
 
