@@ -15,8 +15,6 @@ func r(f func() interface{}) (ret interface{}) {
 func main() {
 	a := []int{11, 12, 13, 14, 15}
 
-	var anil []int
-
 	// a=[11 12 13 14 15]
 	fmt.Printf("a=%v\n", r(func() interface{} { return a }))
 	// a[:1]=[11]
@@ -34,7 +32,7 @@ func main() {
 	fmt.Printf("a=%p, a[:]=%p\n", a, a[:])
 	// nilにappendして無理やり別のsliceに
 	// a=0xc000122060, append(nil, a...)=0xc0001220c0
-	fmt.Printf("a=%p, append(nil, a...)=%p\n", a, append(anil, a...))
+	fmt.Printf("a=%p, append(nil, a...)=%p\n", a, append([]int(nil), a...))
 	// a[0:2]=[11 12]
 	fmt.Printf("a[0:2]=%v\n", r(func() interface{} { return a[0:2] }))
 	// a[1:2]=[12]
