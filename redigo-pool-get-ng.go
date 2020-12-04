@@ -5,7 +5,7 @@ import (
 	"time"
 
 	"github.com/alicebob/miniredis"
-	"github.com/garyburd/redigo/redis"
+	"github.com/gomodule/redigo/redis"
 )
 
 // redigoのAPIはpoolからGetできなかったときもnilを返さない、常にClose出来る確認

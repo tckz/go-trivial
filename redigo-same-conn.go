@@ -7,7 +7,7 @@ import (
 	"sync"
 
 	"github.com/alicebob/miniredis"
-	"github.com/garyburd/redigo/redis"
+	"github.com/gomodule/redigo/redis"
 )
 
 // 1つのredigo.Connを複数のgRPCハンドラから共有しているコードがあり

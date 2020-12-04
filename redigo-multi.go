@@ -7,7 +7,7 @@ import (
 	"time"
 
 	"github.com/alicebob/miniredis"
-	"github.com/garyburd/redigo/redis"
+	"github.com/gomodule/redigo/redis"
 )
 
 // redigoのMULTI/EXECはどう値を返すのか確認
