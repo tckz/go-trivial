@@ -9,8 +9,9 @@ require (
 	github.com/aws/aws-sdk-go-v2 v0.24.0
 	github.com/aws/aws-xray-sdk-go v1.1.0
 	github.com/go-redis/redis v6.15.6+incompatible
+	github.com/go-redis/redis/v8 v8.4.4 // indirect
 	github.com/go-sql-driver/mysql v1.5.0
-	github.com/golang/protobuf v1.3.3
+	github.com/golang/protobuf v1.4.2
 	github.com/gomodule/redigo v2.0.0+incompatible
 	github.com/grpc-ecosystem/go-grpc-middleware v1.2.1
 	github.com/jinzhu/gorm v1.9.12
@@ -18,7 +19,7 @@ require (
 	github.com/pkg/errors v0.9.1
 	github.com/samclarke/robotstxt v0.0.0-20171127213916-2817654b7988
 	github.com/sirupsen/logrus v1.4.2
-	github.com/stretchr/testify v1.5.1
+	github.com/stretchr/testify v1.6.1
 	github.com/tckz/vegetahelper v0.0.2
 	github.com/tsenart/vegeta v12.3.0+incompatible
 	github.com/yuin/gopher-lua v0.0.0-20190206043414-8bfc7677f583 // indirect

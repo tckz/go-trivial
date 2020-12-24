@@ -1,13 +1,14 @@
 package main
 
 import (
+	"context"
 	"log"
 
 	"github.com/alicebob/miniredis"
-	"github.com/go-redis/redis"
+	"github.com/go-redis/redis/v8"
 )
 
-// goredisのDELでキーが存在しないときの挙動
+// goredisのGETでキーが存在しないときの挙動
 
 func main() {
 
@@ -23,8 +24,8 @@ func main() {
 	})
 	defer cl.Close()
 
-	// キー自体がない -> 0, nil
-	ret, err := cl.Del("not_exist").Result()
-	// ret=0, err=<nil>, redis.Nil?=false
+	// キー自体がない -> "", redis.Nil
+	ret, err := cl.Get(context.Background(), "not_exist").Result()
+	// ret=, err=redis: nil, redis.Nil?=true
 	log.Printf("ret=%v, err=%v, redis.Nil?=%v", ret, err, err == redis.Nil)
 }
