@@ -23,6 +23,8 @@ func main() {
 	// int(0)でWithValueしたものはkeyType(0)ではマッチしない
 	fmt.Fprintf(os.Stderr, "1-2: key(%v)=%v\n", keyTypeZero, ctx.Value(keyTypeZero))
 	// 1-3: context.Background.WithValue(type int, val zero)
+	// go1.12だとこうなる（keyの型名ではなくてString()の結果＝元のintの数値）
+	//   1-3: context.Background.WithValue(0, "zero")
 	fmt.Fprintf(os.Stderr, "1-3: %s\n", ctx)
 
 	// typeとして個別の型を定義すれば実体int(1)であっても別のkeyとみなされる
@@ -31,5 +33,7 @@ func main() {
 	// keyType(1)でWithValueするとint(1)ではマッチしない。
 	fmt.Fprintf(os.Stderr, "2-2: key(%v)=%v\n", 1, ctx.Value(1))
 	// 2-3: context.Background.WithValue(type main.keyType, val one)
+	// go1.12だとこうなる（keyの型名ではなくてString()の結果＝元のintの数値）
+	//   2-3: context.Background.WithValue(1, "one")
 	fmt.Fprintf(os.Stderr, "2-3: %s\n", ctx)
 }
