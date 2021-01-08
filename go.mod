@@ -8,6 +8,7 @@ require (
 	github.com/aws/aws-sdk-go v1.32.1
 	github.com/aws/aws-sdk-go-v2 v0.24.0
 	github.com/aws/aws-xray-sdk-go v1.1.0
+	github.com/garyburd/redigo v1.0.0 // indirect
 	github.com/go-redis/redis v6.15.6+incompatible
 	github.com/go-redis/redis/v8 v8.4.4 // indirect
 	github.com/go-sql-driver/mysql v1.5.0
