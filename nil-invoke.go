@@ -23,5 +23,5 @@ func main() {
 	var s2 *some
 	s2.someFunc()
 	// nilに対してフィールドを参照するのはpanic
-	fmt.Fprintf(os.Stderr, "s1: %v\n", s2.field)
+	fmt.Fprintf(os.Stderr, "s2: %v\n", s2.field)
 }
