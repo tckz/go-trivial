@@ -14,10 +14,10 @@ type Some struct {
 
 func main() {
 	s := &Some{}
-	// nil?=true, v=false
-	fmt.Fprintf(os.Stderr, "nil?=%v, v=%v\n", s.MapBool == nil, s.MapBool["who?"])
-	// nil?=true, v=
-	fmt.Fprintf(os.Stderr, "nil?=%v, v=%v\n", s.MapString == nil, s.MapString["wao!"])
+	// MapBool.nil?=true, v=false
+	fmt.Fprintf(os.Stderr, "MapBool.nil?=%v, v=%v\n", s.MapBool == nil, s.MapBool["who?"])
+	// MapString.nil?=true, v=
+	fmt.Fprintf(os.Stderr, "MapString.nil?=%v, v=%v\n", s.MapString == nil, s.MapString["wao!"])
 
 	// mapのmap
 	m := map[string]map[string]string{
