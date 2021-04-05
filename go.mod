@@ -28,4 +28,6 @@ require (
 	go.uber.org/zap v1.10.0
 	golang.org/x/net v0.0.0-20201207224615-747e23833adb
 	google.golang.org/grpc v1.31.1
+	gorm.io/driver/mysql v1.0.5 // indirect
+	gorm.io/gorm v1.21.6 // indirect
 )
