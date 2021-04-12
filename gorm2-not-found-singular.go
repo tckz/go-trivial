@@ -1,8 +1,10 @@
 package main
 
 import (
+	"errors"
 	"flag"
 	"fmt"
+	"log"
 	"os"
 	"time"
 
@@ -29,6 +31,8 @@ func (t TimestampSample) TableName() string {
 	return "timestamp_sample"
 }
 
+// スライスで受けずにレコードがないときはgorm.ErrRecordNotFoundになる
+
 func main() {
 
 	// "root:xxxxxxx@tcp(localhost:3306)/somedb?charset=utf8mb4&parseTime=True&loc=Local"
@@ -53,21 +57,18 @@ func main() {
 		}
 	}()
 
-	/*
-		[2020-10-23 15:54:54]  [0.64ms]  SELECT count(distinct(id)) FROM `timestamp_sample`
-		[0 rows affected or returned ]
+	var rec TimestampSample
 
-		uniqueCount=2
-	*/
-	/* mysqlで同じSQL実行すると1行扱いだけど。この差はどこから。
-	1 row in set (0.00 sec)
-	*/
-	var uniqueCount int64
-	err = db.Select("count(distinct(id))").
-		Model(TimestampSample{}).
-		Count(&uniqueCount).Error
+	// id=-1は存在しない前提。
+	err = db.Where("id = ?", -1).First(&rec).Error
 	if err != nil {
-		panic(err)
+		if errors.Is(err, gorm.ErrRecordNotFound) {
+			// err=&errors.errorString{s:"record not found"}
+			log.Printf("err=%#v", err)
+			return
+		} else {
+			panic(err)
+		}
 	}
-	fmt.Fprintf(os.Stderr, "uniqueCount=%d\n", uniqueCount)
+	fmt.Fprintf(os.Stderr, "%+v\n", rec)
 }
