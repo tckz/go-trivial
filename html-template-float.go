@@ -20,19 +20,20 @@ myNumber2={{.myNumber2}}です
 
 	var v map[string]interface{}
 	json.Unmarshal([]byte(`{"myNumber": 1000000, "myNumber2": 123}`), &v)
+	// Unmarshal: map[string]interface {}{"myNumber":1e+06, "myNumber2":123}
 	fmt.Fprintf(os.Stdout, "Unmarshal: %#v\n", v)
 
 	br := &bytes.Buffer{}
 	t.Execute(br, v)
-	fmt.Fprintf(os.Stdout, "Templated: %s\n", br.String())
 
 	// 数値をinterface{}にUnmarshalすることでfloat64になり
 	// float64をhtml/templateがテキスト化することで指数表記になる。
-
 	// 文字参照部分はhtml/templateを使っているため。
 	/*
-	   myNumber=1.234567e&#43;06です
-	   myNumber2=123です
+		Templated:
+		myNumber=1e&#43;06です
+		myNumberWithFormat=1000000です
+		myNumber2=123です
 	*/
-
+	fmt.Fprintf(os.Stdout, "Templated: %s\n", br.String())
 }
