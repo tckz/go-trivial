@@ -18,4 +18,20 @@ func main() {
 	n2 := bps.MustFromString("9223372036854775808.123")
 	// 9223372036854775808.123
 	fmt.Println(n2.FloatString(3))
+
+	// 123
+	fmt.Println(bps.NewFromAmount(123).Amounts())
+	// 123.0
+	fmt.Println(bps.NewFromAmount(123).FloatString(1))
+	// 1233
+	fmt.Println(bps.MustFromString("1233.778").Amounts())
+
+	// cmp=0 (means equal)
+	fmt.Printf("cmp=%d\n", bps.MustFromString("1233").Cmp(bps.NewFromAmount(1233)))
+
+	// cmp=1
+	fmt.Printf("cmp=%d\n", bps.MustFromString("1233").Cmp(bps.NewFromBaseUnit(1233)))
+
+	// panic: can't convert  to BPS
+	fmt.Println(bps.MustFromString("").Amounts())
 }
