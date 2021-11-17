@@ -29,9 +29,10 @@ func MustSet(vm *otto.Otto, name string, v interface{}) {
 	}
 }
 
-func Run(vm *otto.Otto, s string) {
+func Run(vm *otto.Otto, s string) otto.Value {
 	v, err := vm.Run(s)
 	fmt.Fprintf(os.Stderr, "value(%T)=%s, err(%T)=%+v\n", v, v, err, OttoErrorString(err))
+	return v
 }
 
 func main() {
