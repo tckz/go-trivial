@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"github.com/tckz/go-trivial/grpc-old/api"
+	"github.com/tckz/go-trivial/grpc-old/latency"
 	"google.golang.org/grpc"
 )
 
@@ -43,8 +44,10 @@ type latencyListener struct {
 }
 
 func (l latencyListener) Accept() (net.Conn, error) {
+	log.Printf("server: before Accept")
 	c, err := l.Listener.Accept()
 	if err != nil {
+		log.Printf("server: Accept: %v", err)
 		return nil, err
 	}
 
@@ -83,6 +86,7 @@ func main() {
 	// server
 	optBind := flag.String("bind", ":0", "addr:port to bind")
 	optAcceptLatency := flag.Duration("accept-latency", 0, "")
+	_ = optAcceptLatency
 	flag.Parse()
 
 	lis, err := net.Listen("tcp", *optBind)
@@ -90,9 +94,11 @@ func main() {
 		log.Fatalf("*** net.Listen: %v", err)
 	}
 
-	lis = wrapListener(lis, func() time.Duration {
-		return *optAcceptLatency
-	})
+	/*
+		lis = wrapListener(lis, func() time.Duration {
+			return *optAcceptLatency
+		})
+	*/
 
 	server := grpc.NewServer()
 	defer server.GracefulStop()
@@ -123,6 +129,17 @@ func main() {
 		addr = lis.Addr().String()
 	}
 
+	nw := latency.Network{
+		Kbps:    20 * 1024,
+		Latency: time.Second * 3,
+		MTU:     1500,
+	}
+	_ = nw
+	dialOpts = append(dialOpts,
+		grpc.WithDialer(func(s string, duration time.Duration) (net.Conn, error) {
+			return nw.TimeoutDialer(net.DialTimeout)("tcp", s, duration)
+		}),
+	)
 	log.Printf("Dial: %s", addr)
 	conn, err := grpc.Dial(addr, dialOpts...)
 	if err != nil {
