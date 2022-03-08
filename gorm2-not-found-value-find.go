@@ -60,10 +60,12 @@ func main() {
 	var rec TimestampSample
 
 	// id=-1は存在しない前提。
-	err = db.Where("id = ?", -1).First(&rec).Error
+	// gorm v2はFindが保存先が非sliceであってもErrRecordNotFoundを返さない
+	// Take/First/LastはErrRecordNotFoundを返す
+	err = db.Where("id = ?", -1).Find(&rec).Error
 	if err != nil {
 		if errors.Is(err, gorm.ErrRecordNotFound) {
-			// err=&errors.errorString{s:"record not found"}
+			// 通らない
 			log.Printf("err=%#v", err)
 			return
 		} else {

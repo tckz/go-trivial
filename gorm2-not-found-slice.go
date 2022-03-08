@@ -60,6 +60,7 @@ func main() {
 	var recs []TimestampSample
 
 	// id=-1は存在しない前提。
+	// gorm v2ではFindが非sliceであってもErrRecordNotFoundを返さないのでそもそも比較の意味がない
 	err = db.Where("id = ?", -1).Find(&recs).Error
 	if err != nil {
 		if errors.Is(err, gorm.ErrRecordNotFound) {

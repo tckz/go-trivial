@@ -1,14 +1,16 @@
 package main
 
 import (
+	"errors"
 	"flag"
 	"fmt"
 	"log"
 	"os"
 	"time"
 
-	_ "github.com/go-sql-driver/mysql"
-	"github.com/jinzhu/gorm"
+	"gorm.io/driver/mysql"
+	"gorm.io/gorm"
+	gormlogger "gorm.io/gorm/logger"
 )
 
 /*
@@ -41,20 +43,28 @@ func main() {
 		panic("dsn must be specified")
 	}
 
-	db, err := gorm.Open("mysql", *optDSN)
+	gl := gormlogger.Default.LogMode(gormlogger.Info)
+	db, err := gorm.Open(mysql.Open(*optDSN), &gorm.Config{
+		SkipDefaultTransaction: true,
+		Logger:                 gl,
+	})
 	if err != nil {
 		panic(err)
 	}
-	defer db.Close()
-
-	db.LogMode(true)
+	defer func() {
+		if d, err := db.DB(); err == nil {
+			d.Close()
+		}
+	}()
 
 	var rec TimestampSample
 
 	// id=-1は存在しない前提。
-	err = db.Where("id = ?", -1).First(&rec).Error
+	// gorm v2はFindが保存先が非sliceであってもErrRecordNotFoundを返さない
+	// Take/First/LastはErrRecordNotFoundを返す
+	err = db.Where("id = ?", -1).Take(&rec).Error
 	if err != nil {
-		if err == gorm.ErrRecordNotFound {
+		if errors.Is(err, gorm.ErrRecordNotFound) {
 			// err=&errors.errorString{s:"record not found"}
 			log.Printf("err=%#v", err)
 			return
