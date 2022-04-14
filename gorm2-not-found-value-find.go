@@ -31,8 +31,6 @@ func (t TimestampSample) TableName() string {
 	return "timestamp_sample"
 }
 
-// スライスで受けずにレコードがないときはgorm.ErrRecordNotFoundになる
-
 func main() {
 
 	// "root:xxxxxxx@tcp(localhost:3306)/somedb?charset=utf8mb4&parseTime=True&loc=Local"
@@ -63,6 +61,7 @@ func main() {
 	// gorm v2はFindが保存先が非sliceであってもErrRecordNotFoundを返さない
 	// Take/First/LastはErrRecordNotFoundを返す
 	err = db.Where("id = ?", -1).Find(&rec).Error
+	// err == nilになる
 	if err != nil {
 		if errors.Is(err, gorm.ErrRecordNotFound) {
 			// 通らない
