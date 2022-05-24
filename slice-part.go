@@ -14,6 +14,7 @@ func r(f func() interface{}) (ret interface{}) {
 
 func main() {
 	a := []int{11, 12, 13, 14, 15}
+	b := []int{}
 
 	// a=[11 12 13 14 15]
 	fmt.Printf("a=%v\n", r(func() interface{} { return a }))
@@ -43,4 +44,7 @@ func main() {
 	// To avoid compile error
 	i := 2
 	fmt.Printf("a[3:2]=%v\n", r(func() interface{} { return a[3:i] }))
+
+	// b[1:]=runtime error: slice bounds out of range [1:0]
+	fmt.Printf("b[1:]=%v\n", r(func() interface{} { return b[1:] }))
 }
