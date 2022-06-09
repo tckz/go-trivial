@@ -12,7 +12,7 @@ import (
 )
 
 /*
- * AWS_DEFALT_REGION=ap-northeast-1 module --bucket ....
+ * AWS_DEFAULT_REGION=ap-northeast-1 module --bucket ....
  */
 
 func main() {
