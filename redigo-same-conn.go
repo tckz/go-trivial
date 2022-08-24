@@ -17,7 +17,7 @@ import (
 
 func main() {
 
-	parallel := flag.Int("parallel", 8, "Number of parralelism")
+	parallel := flag.Int("parallel", 8, "Number of parallelism")
 	optAddr := flag.String("addr", "", "Addr of redis")
 	count := flag.Int("count", 100000, "Number of trials")
 	flag.Parse()
