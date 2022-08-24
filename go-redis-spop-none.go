@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 
-	"github.com/alicebob/miniredis"
+	"github.com/alicebob/miniredis/v2"
 	"github.com/go-redis/redis"
 )
 
