@@ -10,6 +10,12 @@ func deferFunc(index int) {
 	}
 }
 
+// recoverした後はpanicのcontextではなくなってる
+/*
+[1]recover: Nooooo
+[0]no recover
+*/
+
 func main() {
 	defer deferFunc(0)
 	defer deferFunc(1)
