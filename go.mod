@@ -17,7 +17,7 @@ require (
 	github.com/guregu/dynamo v1.13.0
 	github.com/jinzhu/gorm v1.9.12
 	github.com/kelseyhightower/envconfig v1.4.0
-	github.com/line/line-bot-sdk-go v7.6.0+incompatible
+	github.com/line/line-bot-sdk-go/v7 v7.16.0
 	github.com/pkg/errors v0.9.1
 	github.com/robertkrimen/otto v0.0.0-20211008084715-4eacda02dd21
 	github.com/samclarke/robotstxt v0.0.0-20171127213916-2817654b7988
