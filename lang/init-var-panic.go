@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/tckz/go-trivial/subpack"
+	"github.com/tckz/go-trivial/lang/subpack"
 )
 
 // importしたpackageにあるvarの初期化でpanicが出るときに

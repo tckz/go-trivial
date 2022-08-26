@@ -15,5 +15,9 @@ func main() {
 	}
 	s, icann := publicsuffix.PublicSuffix(domain)
 
+	// domain=www.google.com, publicSuffix=com, icann=true
+	// etld=google.com, err=<nil>
 	fmt.Fprintf(os.Stderr, "domain=%s, publicSuffix=%s, icann=%t\n", domain, s, icann)
+	etld, err := publicsuffix.EffectiveTLDPlusOne(domain)
+	fmt.Fprintf(os.Stderr, "etld=%s, err=%v\n", etld, err)
 }

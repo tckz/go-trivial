@@ -2,17 +2,16 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
 	"os"
 )
 
 func main() {
 
-	// ioutil.TempFileのコメントに書いてあるとおりだけど、
+	// CreateTempのコメントに書いてあるとおりだけど、
 	// プロセスが終わったら一時ファイルが削除されるということはない、
 	// という確認
 
-	f, err := ioutil.TempFile("/tmp", "myprefix")
+	f, err := os.CreateTemp("/tmp", "myprefix")
 	if err != nil {
 		panic(err)
 	}
