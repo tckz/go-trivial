@@ -3,7 +3,6 @@ package main
 import (
 	"errors"
 	"fmt"
-	"io/ioutil"
 	"log"
 	"os"
 	"time"
@@ -51,7 +50,7 @@ func main() {
 		return otto.New()
 	}()
 	for _, e := range os.Args[1:] {
-		b, err := ioutil.ReadFile(e)
+		b, err := os.ReadFile(e)
 		if err != nil {
 			log.Fatalf("ReadFile: %v", err)
 		}
