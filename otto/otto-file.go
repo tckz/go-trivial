@@ -31,22 +31,22 @@ func MustSet(vm *otto.Otto, name string, v interface{}) {
 }
 
 func Run(vm *otto.Otto, s string) {
-	from := time.Now()
 	v, err := vm.Run(s)
-	fmt.Fprintf(os.Stderr, "value(%T)=%s, err(%T)=%+v, dur=%s\n", v, v, err, OttoErrorString(err), time.Since(from))
+	fmt.Fprintf(os.Stderr, "value(%T)=%s, err(%T)=%+v\n", v, v, err, OttoErrorString(err))
 }
 
-func logDur(from time.Time, s string) func() {
+func logDur(s string) func() {
+	from := time.Now()
 	return func() {
 		log.Printf("%s: dur=%s", s, time.Since(from))
 	}
 }
 
 func main() {
-	defer logDur(time.Now(), "main()")()
+	defer logDur("main()")()
 
 	vm := func() *otto.Otto {
-		defer logDur(time.Now(), "otto.New()")()
+		defer logDur("otto.New()")()
 		return otto.New()
 	}()
 	for _, e := range os.Args[1:] {
@@ -55,6 +55,10 @@ func main() {
 			log.Fatalf("ReadFile: %v", err)
 		}
 
-		Run(vm, string(b))
+		func() {
+			s := string(b)
+			defer logDur(fmt.Sprintf("Run(%s)", e))()
+			Run(vm, s)
+		}()
 	}
 }
