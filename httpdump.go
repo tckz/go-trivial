@@ -45,9 +45,16 @@ func main() {
 			return
 		}
 
+		if err := r.ParseForm(); err != nil {
+			http.Error(w, fmt.Sprint(err), http.StatusInternalServerError)
+			return
+		}
+
 		time.Sleep(*optWait + genJitter())
 
 		fmt.Fprintf(w, "%s\n", dump)
+		fmt.Fprintf(w, "PostForm=%v\n", r.PostForm)
+		fmt.Fprintf(w, "Form=%v\n", r.Form)
 	})
 
 	srv := &http.Server{
