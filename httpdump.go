@@ -39,22 +39,26 @@ func main() {
 	}
 	m := &http.ServeMux{}
 	m.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		log.Printf("%s %s", r.Method, r.URL)
+
 		dump, err := httputil.DumpRequest(r, true)
 		if err != nil {
-			http.Error(w, fmt.Sprint(err), http.StatusInternalServerError)
+			w.WriteHeader(http.StatusInternalServerError)
+			log.Printf("DumpRequest: %s", err)
 			return
 		}
 
 		if err := r.ParseForm(); err != nil {
-			http.Error(w, fmt.Sprint(err), http.StatusInternalServerError)
+			w.WriteHeader(http.StatusInternalServerError)
+			log.Printf("ParseForm: %s", err)
 			return
 		}
 
 		time.Sleep(*optWait + genJitter())
 
-		fmt.Fprintf(w, "%s\n", dump)
-		fmt.Fprintf(w, "PostForm=%v\n", r.PostForm)
-		fmt.Fprintf(w, "Form=%v\n", r.Form)
+		fmt.Fprintf(os.Stderr, "%s\n", dump)
+		fmt.Fprintf(os.Stderr, "PostForm=%v\n", r.PostForm)
+		fmt.Fprintf(os.Stderr, "Form=%v\n", r.Form)
 	})
 
 	srv := &http.Server{
