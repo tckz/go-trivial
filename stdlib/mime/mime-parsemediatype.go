@@ -10,9 +10,9 @@ func main() {
 	for i, e := range []string{
 		// #0: mediaType=text/plain, param=map[charset:UTF-8], err=<nil>
 		"text/plain;charset=UTF-8",
-		// メディアタイプは小文字に正規化される
+		// メディアタイプ, パラメーター名は小文字に正規化される
 		// #1: mediaType=text/plain, param=map[charset:UTF-8 hello:yo wao:hi], err=<nil>
-		"Text/PLAIN ; charset=UTF-8 ; wao = hi;hello=yo",
+		"Text/PLAIN ; CHarset=UTF-8 ; wao = hi;hello=yo",
 		// #2: mediaType=text/plain, param=map[], err=<nil>
 		"text/plain",
 		// #3: mediaType=text, param=map[], err=<nil>
