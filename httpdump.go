@@ -39,7 +39,7 @@ func main() {
 	}
 	m := &http.ServeMux{}
 	m.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		log.Printf("%s %s", r.Method, r.URL)
+		log.Printf("%s %s %s", r.RemoteAddr, r.Method, r.URL)
 
 		dump, err := httputil.DumpRequest(r, true)
 		if err != nil {
@@ -47,6 +47,7 @@ func main() {
 			log.Printf("DumpRequest: %s", err)
 			return
 		}
+		fmt.Fprintf(os.Stderr, "%s\n", dump)
 
 		if err := r.ParseForm(); err != nil {
 			w.WriteHeader(http.StatusInternalServerError)
@@ -56,7 +57,6 @@ func main() {
 
 		time.Sleep(*optWait + genJitter())
 
-		fmt.Fprintf(os.Stderr, "%s\n", dump)
 		fmt.Fprintf(os.Stderr, "PostForm=%v\n", r.PostForm)
 		fmt.Fprintf(os.Stderr, "Form=%v\n", r.Form)
 	})
