@@ -5,19 +5,17 @@ import (
 	"log"
 	"time"
 
-	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/dynamodb"
 	"github.com/guregu/dynamo"
 )
 
 func main() {
-	sess := session.Must(session.NewSession())
+	sess := session.Must(session.NewSessionWithOptions(session.Options{
+		SharedConfigState: session.SharedConfigEnable,
+	}))
 
-	cli := dynamodb.New(sess, &aws.Config{
-		Region: aws.String("ap-northeast-1"),
-	})
-	db := dynamo.NewFromIface(cli)
+	db := dynamo.NewFromIface(dynamodb.New(sess))
 
 	type Cache struct {
 		Key       string    `dynamo:"key"`
