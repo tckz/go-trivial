@@ -30,7 +30,7 @@ require (
 	github.com/tsenart/vegeta v12.3.0+incompatible
 	go.mercari.io/go-bps v1.1.1
 	go.uber.org/zap v1.13.0
-	golang.org/x/net v0.1.0
+	golang.org/x/net v0.4.0
 	google.golang.org/grpc v1.31.1
 	gorm.io/datatypes v1.0.3
 	gorm.io/driver/mysql v1.1.3
@@ -62,8 +62,8 @@ require (
 	go.uber.org/atomic v1.6.0 // indirect
 	go.uber.org/multierr v1.5.0 // indirect
 	golang.org/x/lint v0.0.0-20190930215403-16217165b5de // indirect
-	golang.org/x/sys v0.1.0 // indirect
-	golang.org/x/text v0.4.0 // indirect
+	golang.org/x/sys v0.3.0 // indirect
+	golang.org/x/text v0.5.0 // indirect
 	golang.org/x/tools v0.1.12 // indirect
 	google.golang.org/genproto v0.0.0-20200423170343-7949de9c1215 // indirect
 	google.golang.org/protobuf v1.23.0 // indirect
