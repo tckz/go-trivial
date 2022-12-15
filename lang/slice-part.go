@@ -44,7 +44,15 @@ func main() {
 	// To avoid compile error
 	i := 2
 	fmt.Printf("a[3:2]=%v\n", r(func() interface{} { return a[3:i] }))
+	// 長さ0のスライス化、capは維持される
+	// a[:0]=[], cap(a)=5
+	fmt.Printf("a[:0]=%v, cap(a)=%d\n", r(func() interface{} { return a[:0] }), cap(a))
 
 	// b[1:]=runtime error: slice bounds out of range [1:0]
 	fmt.Printf("b[1:]=%v\n", r(func() interface{} { return b[1:] }))
+
+	// nilを長さ0のスライスに
+	// c[:0]=[]
+	var c []int
+	fmt.Printf("c[:0]=%v\n", r(func() interface{} { return c[:0] }))
 }
