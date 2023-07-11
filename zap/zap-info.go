@@ -1,6 +1,10 @@
 package main
 
-import "go.uber.org/zap"
+import (
+	"errors"
+
+	"go.uber.org/zap"
+)
 
 type SomeID2 string
 
@@ -27,4 +31,6 @@ func main() {
 	logger.Info("Infoだから連結される: [%s][%s]", &id1, &id2)
 	// ポインタと%s、ポインタ側にString()実装があれば意図通りに: [%!s(*main.SomeID=0xc000112e30)][id2]
 	logger.Infof("ポインタと%%s、ポインタ側にString()実装があれば意図通りに: [%s][%s]", &id1, &id2)
+	// %wは使えない
+	logger.Infof("err=%w", errors.New("err da"))
 }

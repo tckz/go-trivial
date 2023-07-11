@@ -24,6 +24,7 @@ require (
 	github.com/line/line-bot-sdk-go/v7 v7.16.0
 	github.com/pkg/errors v0.9.1
 	github.com/robertkrimen/otto v0.0.0-20211008084715-4eacda02dd21
+	github.com/samber/lo v1.38.1
 	github.com/samclarke/robotstxt v0.0.0-20171127213916-2817654b7988
 	github.com/sirupsen/logrus v1.4.2
 	github.com/stretchr/testify v1.7.0
@@ -61,6 +62,7 @@ require (
 	go.opentelemetry.io/otel v0.15.0 // indirect
 	go.uber.org/atomic v1.6.0 // indirect
 	go.uber.org/multierr v1.5.0 // indirect
+	golang.org/x/exp v0.0.0-20220303212507-bbda1eaf7a17 // indirect
 	golang.org/x/lint v0.0.0-20190930215403-16217165b5de // indirect
 	golang.org/x/sys v0.6.0 // indirect
 	golang.org/x/text v0.8.0 // indirect
