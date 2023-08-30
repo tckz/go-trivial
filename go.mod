@@ -24,7 +24,6 @@ require (
 	github.com/line/line-bot-sdk-go/v7 v7.16.0
 	github.com/pkg/errors v0.9.1
 	github.com/robertkrimen/otto v0.0.0-20211008084715-4eacda02dd21
-	github.com/samber/lo v1.38.1
 	github.com/samclarke/robotstxt v0.0.0-20171127213916-2817654b7988
 	github.com/sirupsen/logrus v1.4.2
 	github.com/stretchr/testify v1.7.0
@@ -70,5 +69,5 @@ require (
 	google.golang.org/genproto v0.0.0-20200423170343-7949de9c1215 // indirect
 	google.golang.org/protobuf v1.23.0 // indirect
 	gopkg.in/sourcemap.v1 v1.0.5 // indirect
-	gopkg.in/yaml.v3 v3.0.0-20200313102051-9f266ea9e77c // indirect
+	gopkg.in/yaml.v3 v3.0.0 // indirect
 )
