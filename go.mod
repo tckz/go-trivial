@@ -3,6 +3,7 @@ module github.com/tckz/go-trivial
 go 1.21
 
 require (
+	github.com/BurntSushi/toml v1.3.2
 	github.com/alicebob/miniredis/v2 v2.23.0
 	github.com/aws/aws-sdk-go v1.44.138
 	github.com/aws/aws-sdk-go-v2 v0.24.0
