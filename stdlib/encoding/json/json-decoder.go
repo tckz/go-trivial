@@ -19,6 +19,7 @@ func main() {
 		var v SomeType
 		err := dec.Decode(&v)
 		if err != nil {
+			fmt.Fprintf(os.Stderr, "err: %v\n", err)
 			if err != io.EOF {
 				panic(err)
 			}
