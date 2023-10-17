@@ -50,6 +50,8 @@ func main() {
 
 	// b[1:]=runtime error: slice bounds out of range [1:0]
 	fmt.Printf("b[1:]=%v\n", r(func() interface{} { return b[1:] }))
+	// b[0:0]=[]
+	fmt.Printf("b[0:0]=%v\n", r(func() interface{} { return b[0:0] }))
 
 	// nilを長さ0のスライスに
 	// c[:0]=[]
