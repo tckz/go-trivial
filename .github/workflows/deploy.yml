@@ -1,0 +1,43 @@
+name: " Deploy mail"
+on:
+  push:
+    branches:
+      - check-deploy
+  workflow_run:
+    workflows: ["Build image"]
+    branches: [check-deploy]
+    types: [completed]
+  workflow_dispatch:
+    inputs:
+      env:
+        type: choice
+        description: Target environment
+        required: true
+        options:
+          - dev
+          - stg
+          - prod
+
+permissions:
+  contents: read
+
+jobs:
+  set-env:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      deploy_env: ${{ github.event.inputs.env || 'dev' }}
+    steps:
+      - name: dummy
+        run: |
+          :
+
+  deploy:
+    needs: [set-env]
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: deploy
+        run: |
+          deploy_env="${{ needs.set-env.outputs.deploy_env }}"
+          echo "deploy $deploy_env done" 1>&2
