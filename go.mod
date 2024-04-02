@@ -8,7 +8,7 @@ require (
 	github.com/aws/aws-sdk-go v1.44.138
 	github.com/aws/aws-sdk-go-v2 v0.24.0
 	github.com/aws/aws-xray-sdk-go v1.1.0
-	github.com/dop251/goja v0.0.0-20221003171542-5ea1285e6c91
+	github.com/dop251/goja v0.0.0-20240220182346-e401ed450204
 	github.com/dop251/goja_nodejs v0.0.0-20221009164102-3aa5028e57f6
 	github.com/garyburd/redigo v1.0.0
 	github.com/go-redis/redis v6.15.6+incompatible
@@ -51,6 +51,7 @@ require (
 	github.com/dlclark/regexp2 v1.7.0 // indirect
 	github.com/go-sourcemap/sourcemap v2.1.3+incompatible // indirect
 	github.com/gofrs/uuid v4.3.1+incompatible // indirect
+	github.com/google/pprof v0.0.0-20230207041349-798e818bf904 // indirect
 	github.com/influxdata/tdigest v0.0.0-20181121200506-bf2b5ad3c0a9 // indirect
 	github.com/jinzhu/inflection v1.0.0 // indirect
 	github.com/jinzhu/now v1.1.2 // indirect
