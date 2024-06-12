@@ -23,6 +23,7 @@ require (
 	github.com/joho/godotenv v1.4.0
 	github.com/kelseyhightower/envconfig v1.4.0
 	github.com/line/line-bot-sdk-go/v7 v7.16.0
+	github.com/line/line-bot-sdk-go/v8 v8.6.0
 	github.com/pkg/errors v0.9.1
 	github.com/robertkrimen/otto v0.0.0-20211008084715-4eacda02dd21
 	github.com/samber/lo v1.38.1
