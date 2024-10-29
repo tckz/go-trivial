@@ -6,8 +6,12 @@ require (
 	github.com/BurntSushi/toml v1.3.2
 	github.com/alicebob/miniredis/v2 v2.23.0
 	github.com/aws/aws-sdk-go v1.44.138
-	github.com/aws/aws-sdk-go-v2 v0.24.0
+	github.com/aws/aws-sdk-go-v2 v1.32.3
+	github.com/aws/aws-sdk-go-v2/config v1.28.1
+	github.com/aws/aws-sdk-go-v2/service/dynamodb v1.34.5
+	github.com/aws/aws-sdk-go-v2/service/sts v1.32.3
 	github.com/aws/aws-xray-sdk-go v1.1.0
+	github.com/aws/smithy-go v1.22.0
 	github.com/dop251/goja v0.0.0-20240220182346-e401ed450204
 	github.com/dop251/goja_nodejs v0.0.0-20221009164102-3aa5028e57f6
 	github.com/garyburd/redigo v1.0.0
@@ -20,6 +24,7 @@ require (
 	github.com/gorilla/mux v1.8.0
 	github.com/grpc-ecosystem/go-grpc-middleware v1.2.1
 	github.com/guregu/dynamo v1.13.0
+	github.com/guregu/dynamo/v2 v2.2.1
 	github.com/jinzhu/gorm v1.9.12
 	github.com/joho/godotenv v1.4.0
 	github.com/kelseyhightower/envconfig v1.4.0
@@ -44,8 +49,20 @@ require (
 
 require (
 	github.com/alicebob/gopher-json v0.0.0-20200520072559-a9ecdc9d1d3a // indirect
+	github.com/aws/aws-sdk-go-v2/credentials v1.17.42 // indirect
+	github.com/aws/aws-sdk-go-v2/feature/dynamodb/attributevalue v1.14.11 // indirect
+	github.com/aws/aws-sdk-go-v2/feature/ec2/imds v1.16.18 // indirect
+	github.com/aws/aws-sdk-go-v2/internal/configsources v1.3.22 // indirect
+	github.com/aws/aws-sdk-go-v2/internal/endpoints/v2 v2.6.22 // indirect
+	github.com/aws/aws-sdk-go-v2/internal/ini v1.8.1 // indirect
+	github.com/aws/aws-sdk-go-v2/service/dynamodbstreams v1.22.4 // indirect
+	github.com/aws/aws-sdk-go-v2/service/internal/accept-encoding v1.12.0 // indirect
+	github.com/aws/aws-sdk-go-v2/service/internal/endpoint-discovery v1.9.17 // indirect
+	github.com/aws/aws-sdk-go-v2/service/internal/presigned-url v1.12.3 // indirect
+	github.com/aws/aws-sdk-go-v2/service/sso v1.24.3 // indirect
+	github.com/aws/aws-sdk-go-v2/service/ssooidc v1.28.3 // indirect
 	github.com/bmizerany/perks v0.0.0-20141205001514-d9a9656a3a4b // indirect
-	github.com/cenkalti/backoff/v4 v4.1.2 // indirect
+	github.com/cenkalti/backoff/v4 v4.3.0 // indirect
 	github.com/cespare/xxhash/v2 v2.2.0 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/dgryski/go-gk v0.0.0-20200319235926-a69029f61654 // indirect
@@ -71,6 +88,7 @@ require (
 	go.uber.org/multierr v1.5.0 // indirect
 	golang.org/x/exp v0.0.0-20220303212507-bbda1eaf7a17 // indirect
 	golang.org/x/lint v0.0.0-20190930215403-16217165b5de // indirect
+	golang.org/x/sync v0.8.0 // indirect
 	golang.org/x/sys v0.19.0 // indirect
 	golang.org/x/text v0.14.0 // indirect
 	golang.org/x/tools v0.6.0 // indirect
