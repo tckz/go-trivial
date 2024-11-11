@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"log"
+	"os"
 	"time"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
@@ -14,6 +15,8 @@ import (
 	"github.com/aws/aws-sdk-go-v2/service/dynamodb/types"
 	"github.com/aws/smithy-go"
 	"github.com/guregu/dynamo/v2"
+	"github.com/samber/lo"
+	"github.com/tckz/go-trivial"
 )
 
 func main() {
@@ -36,10 +39,14 @@ func main() {
 	}
 
 	tbl := db.Table("cache")
+	var cc dynamo.ConsumedCapacity
 	err = db.WriteTx().
-		Put(tbl.Put(&Cache{Key: "key1", ExpiresAt: time.Now().Add(time.Minute * 1)}).
+		ConsumedCapacity(&cc).
+		Put(tbl.Put(&Cache{Key: "key3", ExpiresAt: time.Now().Add(time.Minute * 1)}).
 			If("attribute_not_exists($)", "key")).
-		Put(tbl.Put(&Cache{Key: "key2", ExpiresAt: time.Now().Add(time.Minute * 1)}).
+		Put(tbl.Put(&Cache{Key: "key4", ExpiresAt: time.Now().Add(time.Minute * 1)}).
+			If("attribute_not_exists($)", "key")).
+		Put(tbl.Put(&Cache{Key: "key5", ExpiresAt: time.Now().Add(time.Minute * 1)}).
 			If("attribute_not_exists($)", "key")).
 		Run(ctx)
 	if err != nil {
@@ -67,4 +74,6 @@ func main() {
 		}
 		log.Fatalf("WriteTx: err=%T: %v", err, err)
 	}
+
+	lo.Must0(trivial.OutYaml(cc, os.Stdout))
 }
