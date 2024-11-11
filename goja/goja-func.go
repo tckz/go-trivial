@@ -1,7 +1,6 @@
 package main
 
 import (
-	"errors"
 	"fmt"
 	"os"
 
@@ -10,33 +9,8 @@ import (
 	"github.com/dop251/goja_nodejs/console"
 	"github.com/dop251/goja_nodejs/require"
 	"github.com/samber/lo"
+	"github.com/tckz/go-trivial/goja/common"
 )
-
-func GojaErrorString(err error) string {
-	if err == nil {
-		return ""
-	}
-
-	var ge *goja.Exception
-	if errors.As(err, &ge) {
-		// こっちだとスタックトレースも含まれる
-		return ge.String()
-	}
-
-	return err.Error()
-}
-
-func RunProgram(vm *goja.Runtime, pg *goja.Program) (goja.Value, error) {
-	v, err := vm.RunProgram(pg)
-	fmt.Fprintf(os.Stderr, "RunProgram: return(%T)=%s, err(%T)=%+v\n", v, v, err, GojaErrorString(err))
-	return v, err
-}
-
-func Compile(s string) (*goja.Program, error) {
-	pg, err := goja.Compile("", s, true)
-	fmt.Fprintf(os.Stderr, "Compile: err(%T)=%+v\n", err, GojaErrorString(err))
-	return pg, err
-}
 
 func main() {
 	vm := goja.New()
@@ -46,7 +20,7 @@ func main() {
 	vm.SetParserOptions(parser.WithDisableSourceMaps)
 	console.Enable(vm)
 
-	pg := lo.Must(Compile(`
+	pg := lo.Must(common.Compile(`
 function jsFunc(v) {
 	// 2024/04/02 12:00:22 {"Code":1,"Msg":"hello","Map":{}}
 	console.log(JSON.stringify(v));
@@ -59,7 +33,7 @@ function jsFunc(v) {
 }
 `))
 
-	lo.Must(RunProgram(vm, pg))
+	lo.Must(common.RunProgram(vm, pg))
 
 	type Param struct {
 		// デフォルトではjsonタグは関係ないがTagFieldNameMapperを明示することでjsonタグが反映される
@@ -93,7 +67,7 @@ function jsFunc(v) {
 	v, err := jsFunc(&param)
 
 	// return={ResultCode:123 Status:ok unexportedValue:0}, err(<nil>)=
-	fmt.Fprintf(os.Stderr, "return=%+v, err(%T)=%+v\n", v, err, GojaErrorString(err))
+	fmt.Fprintf(os.Stderr, "return=%+v, err(%T)=%+v\n", v, err, common.GojaErrorString(err))
 
 	// js側の設定値が反映されている
 	// param={Code:999 Msg:hello Map:map[key3:val3] unexportedValue:88}

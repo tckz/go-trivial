@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"os"
+	"log"
 
 	"github.com/dop251/goja"
 	"github.com/dop251/goja/parser"
@@ -19,19 +19,22 @@ func main() {
 	vm.SetParserOptions(parser.WithDisableSourceMaps)
 	console.Enable(vm)
 
-	// jsが投げた例外は goja.Exception としてgo側のerrに返される
+	// functionオブジェクトを返して、それをgo側で呼び出す
 
-	v, err := vm.RunString(`
-function jsFunc(v) {
-	throw new Error("jsFunc error");
-}
-jsFunc();
+	v := common.Run(vm, `
+(function(x) {
+	return x;
+});
 `)
 
-	/*
-		return=<nil>, err(*goja.Exception)=Error: jsFunc error
-			at jsFunc (<eval>:3:8(3))
-			at <eval>:5:7(3)
-	*/
-	fmt.Fprintf(os.Stderr, "return=%+v, err(%T)=%+v\n", v, err, common.GojaErrorString(err))
+	var jsFunc func(int) (int, error)
+	if err := vm.ExportTo(v, &jsFunc); err != nil {
+		panic(fmt.Errorf("ExportTo: %w", err))
+	}
+
+	vv, err := jsFunc(456)
+	if err != nil {
+		panic(err)
+	}
+	log.Printf("call(456)=%+v", vv)
 }

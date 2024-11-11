@@ -1,7 +1,6 @@
 package main
 
 import (
-	"errors"
 	"fmt"
 	"log"
 	"os"
@@ -18,25 +17,6 @@ func logDur(s string) func() {
 	return func() {
 		log.Printf("%s: dur=%s", s, time.Since(from))
 	}
-}
-
-func GojaErrorString(err error) string {
-	if err == nil {
-		return ""
-	}
-
-	var ge *goja.Exception
-	if errors.As(err, &ge) {
-		// こっちだとスタックトレースも含まれる
-		return ge.String()
-	}
-
-	return err.Error()
-}
-
-func Run(vm *goja.Runtime, s string) {
-	v, err := vm.RunString(s)
-	fmt.Fprintf(os.Stderr, "value(%T)=%s, err(%T)=%+v\n", v, v, err, GojaErrorString(err))
 }
 
 func main() {
