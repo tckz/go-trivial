@@ -75,5 +75,5 @@ func main() {
 		log.Fatalf("WriteTx: err=%T: %v", err, err)
 	}
 
-	lo.Must0(trivial.OutYaml(cc, os.Stdout))
+	lo.Must0(trivial.OutYaml(os.Stdout, cc))
 }

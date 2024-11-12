@@ -29,5 +29,5 @@ func main() {
 		return
 	}
 
-	lo.Must0(trivial.OutYaml(res, os.Stdout))
+	lo.Must0(trivial.OutYaml(os.Stdout, res))
 }
