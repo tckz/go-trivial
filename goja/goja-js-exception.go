@@ -8,7 +8,7 @@ import (
 	"github.com/dop251/goja/parser"
 	"github.com/dop251/goja_nodejs/console"
 	"github.com/dop251/goja_nodejs/require"
-	"github.com/tckz/go-trivial/goja/common"
+	"github.com/tckz/go-trivial/goja/gojahelper"
 )
 
 func main() {
@@ -33,5 +33,5 @@ jsFunc();
 			at jsFunc (<eval>:3:8(3))
 			at <eval>:5:7(3)
 	*/
-	fmt.Fprintf(os.Stderr, "return=%+v, err(%T)=%+v\n", v, err, common.GojaErrorString(err))
+	fmt.Fprintf(os.Stderr, "return=%+v, err(%T)=%+v\n", v, err, gojahelper.GojaErrorString(err))
 }

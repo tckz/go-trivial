@@ -8,7 +8,7 @@ import (
 	"github.com/dop251/goja/parser"
 	"github.com/dop251/goja_nodejs/console"
 	"github.com/dop251/goja_nodejs/require"
-	"github.com/tckz/go-trivial/goja/common"
+	"github.com/tckz/go-trivial/goja/gojahelper"
 )
 
 func main() {
@@ -21,7 +21,7 @@ func main() {
 
 	// functionオブジェクトを返して、それをgo側で呼び出す
 
-	v := common.Run(vm, `
+	v := gojahelper.Run(vm, `
 (function(x) {
 	return x;
 });

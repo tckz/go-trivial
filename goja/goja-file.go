@@ -10,6 +10,7 @@ import (
 	"github.com/dop251/goja/parser"
 	"github.com/dop251/goja_nodejs/console"
 	"github.com/dop251/goja_nodejs/require"
+	"github.com/tckz/go-trivial/goja/gojahelper"
 )
 
 func logDur(s string) func() {
@@ -41,7 +42,7 @@ func main() {
 		func() {
 			s := string(b)
 			defer logDur(fmt.Sprintf("Run(%s)", e))()
-			Run(vm, s)
+			gojahelper.Run(vm, s)
 		}()
 	}
 }

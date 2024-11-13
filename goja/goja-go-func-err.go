@@ -9,7 +9,7 @@ import (
 	"github.com/dop251/goja/parser"
 	"github.com/dop251/goja_nodejs/console"
 	"github.com/dop251/goja_nodejs/require"
-	"github.com/tckz/go-trivial/goja/common"
+	"github.com/tckz/go-trivial/goja/gojahelper"
 )
 
 type ExampleError struct {
@@ -31,13 +31,13 @@ func main() {
 	// goの関数を渡してjs側で呼び出しそれがエラーになったときどんな例外になるか
 	// goja.GoErrorでwrapされ、元のgoのerrorとして取り出せる
 
-	common.MustSet(vm, "goFunc", func(v int) error {
+	gojahelper.MustSet(vm, "goFunc", func(v int) error {
 		return &ExampleError{s: fmt.Sprintf("goFunc error: %v", v)}
 	})
 	v, err := vm.RunString(`
 goFunc(123);
 `)
-	fmt.Fprintf(os.Stderr, "value(%T)=%s, err(%T)=%+v\n", v, v, err, common.GojaErrorString(err))
+	fmt.Fprintf(os.Stderr, "value(%T)=%s, err(%T)=%+v\n", v, v, err, gojahelper.GojaErrorString(err))
 
 	var ee *ExampleError
 	ok := errors.As(err, &ee)
