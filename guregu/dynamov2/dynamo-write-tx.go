@@ -41,6 +41,8 @@ func main() {
 	tbl := db.Table("cache")
 	var cc dynamo.ConsumedCapacity
 	err = db.WriteTx().
+		// クライアントトークンを乱数生成して設定してくれる
+		Idempotent(true).
 		ConsumedCapacity(&cc).
 		Put(tbl.Put(&Cache{Key: "key3", ExpiresAt: time.Now().Add(time.Minute * 1)}).
 			If("attribute_not_exists($)", "key")).
