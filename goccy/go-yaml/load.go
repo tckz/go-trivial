@@ -12,6 +12,10 @@ func main() {
 
 	b := lo.Must(os.ReadFile(fn))
 	var v any
-	lo.Must0(yaml.UnmarshalWithOptions(b, &v, yaml.UseOrderedMap()))
+	err := yaml.UnmarshalWithOptions(b, &v, yaml.UseOrderedMap())
+	if err != nil {
+		os.Stderr.WriteString(yaml.FormatError(err, true, true))
+		os.Exit(1)
+	}
 	lo.Must0(yaml.NewEncoder(os.Stdout, yaml.UseLiteralStyleIfMultiline(true)).Encode(v))
 }
