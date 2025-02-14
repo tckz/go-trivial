@@ -4,6 +4,7 @@ import (
 	"os"
 
 	"github.com/goccy/go-yaml"
+	"github.com/mattn/go-isatty"
 	"github.com/samber/lo"
 )
 
@@ -12,6 +13,10 @@ func main() {
 
 	b := lo.Must(os.ReadFile(fn))
 	var v any
-	lo.Must0(yaml.UnmarshalWithOptions(b, &v, yaml.UseOrderedMap()))
+	if err := yaml.UnmarshalWithOptions(b, &v, yaml.UseOrderedMap()); err != nil {
+		w := os.Stderr
+		w.WriteString(yaml.FormatError(err, isatty.IsTerminal(w.Fd()), true))
+		os.Exit(1)
+	}
 	lo.Must0(yaml.NewEncoder(os.Stdout, yaml.UseLiteralStyleIfMultiline(true)).Encode(v))
 }
