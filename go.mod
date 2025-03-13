@@ -1,7 +1,6 @@
 module github.com/tckz/go-trivial
 
 go 1.23
-
 require (
 	github.com/BurntSushi/toml v1.3.2
 	github.com/alicebob/miniredis/v2 v2.23.0
@@ -41,7 +40,7 @@ require (
 	github.com/tsenart/vegeta v12.3.0+incompatible
 	go.mercari.io/go-bps v1.1.1
 	go.uber.org/zap v1.13.0
-	golang.org/x/net v0.35.0
+	golang.org/x/net v0.36.0
 	google.golang.org/grpc v1.63.1
 	gorm.io/datatypes v1.0.3
 	gorm.io/driver/mysql v1.1.3
