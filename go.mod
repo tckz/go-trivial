@@ -1,6 +1,6 @@
 module github.com/tckz/go-trivial
 
-go 1.24
+go 1.24.0
 
 require (
 	github.com/BurntSushi/toml v1.4.0
@@ -41,8 +41,8 @@ require (
 	github.com/tsenart/vegeta/v12 v12.12.0
 	go.mercari.io/go-bps v1.1.1
 	go.uber.org/zap v1.27.0
-	golang.org/x/net v0.41.0
-	google.golang.org/grpc v1.71.0
+	golang.org/x/net v0.48.0
+	google.golang.org/grpc v1.79.3
 	gorm.io/datatypes v1.2.5
 	gorm.io/driver/mysql v1.5.7
 	gorm.io/gorm v1.25.12
@@ -87,11 +87,11 @@ require (
 	github.com/valyala/fasthttp v1.52.0 // indirect
 	github.com/yuin/gopher-lua v1.1.1 // indirect
 	go.uber.org/multierr v1.10.0 // indirect
-	golang.org/x/sync v0.15.0 // indirect
-	golang.org/x/sys v0.33.0 // indirect
-	golang.org/x/text v0.26.0 // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20250115164207-1a7da9e5054f // indirect
-	google.golang.org/protobuf v1.36.4 // indirect
+	golang.org/x/sync v0.19.0 // indirect
+	golang.org/x/sys v0.39.0 // indirect
+	golang.org/x/text v0.32.0 // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20251202230838-ff82c1b0f217 // indirect
+	google.golang.org/protobuf v1.36.10 // indirect
 	gopkg.in/check.v1 v1.0.0-20201130134442-10cb98267c6c // indirect
 	gopkg.in/sourcemap.v1 v1.0.5 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
