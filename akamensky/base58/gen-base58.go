@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
+	"uuid"
 
 	"github.com/akamensky/base58"
-	"github.com/google/uuid"
 )
 
 func main() {
