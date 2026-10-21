@@ -5,18 +5,16 @@ import (
 	"flag"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"log"
-	"math/rand"
 	"net/http"
 	"os"
 	"os/signal"
 	"syscall"
 	"time"
 
-	"github.com/aws/aws-xray-sdk-go/strategy/sampling"
-	"github.com/aws/aws-xray-sdk-go/xray"
-	"github.com/aws/aws-xray-sdk-go/xraylog"
+	"github.com/aws/aws-xray-sdk-go/v2/strategy/sampling"
+	"github.com/aws/aws-xray-sdk-go/v2/xray"
+	"github.com/aws/aws-xray-sdk-go/v2/xraylog"
 	vh "github.com/tckz/vegetahelper"
 	vegeta "github.com/tsenart/vegeta/v12/lib"
 )
@@ -74,8 +72,6 @@ func (l xrayLogger) Log(level xraylog.LogLevel, msg fmt.Stringer) {
 var _ xraylog.Logger = (*xrayLogger)(nil)
 
 func init() {
-	rand.Seed(time.Now().UnixNano())
-
 	flag.Var(optRate, "rate", "Number of requests per time unit")
 	flag.Parse()
 
@@ -91,7 +87,7 @@ func init() {
 }
 
 func main() {
-	ctx, cancel := context.WithCancel(context.Background())
+	ctx, cancel := signal.NotifyContext(context.Background(), syscall.SIGINT)
 	defer cancel()
 
 	cl := &http.Client{
@@ -120,10 +116,10 @@ func main() {
 
 		defer func() {
 			defer res.Body.Close()
-			io.Copy(ioutil.Discard, res.Body)
+			io.Copy(io.Discard, res.Body)
 		}()
 
-		n, err := io.Copy(ioutil.Discard, res.Body)
+		n, err := io.Copy(io.Discard, res.Body)
 		if err != nil {
 			return nil, err
 		}
@@ -145,27 +141,25 @@ func main() {
 	defer out.Close()
 	enc := vegeta.NewEncoder(out)
 
-	sig := make(chan os.Signal)
-	signal.Notify(sig, syscall.SIGINT)
-
-loop:
-	for {
-		select {
-		case s := <-sig:
-			log.Printf("Received signal: %s", s)
-			cancel()
-			// keep loop until 'res' is closed.
-		case r, ok := <-res:
-			if !ok {
-				break loop
-			}
-			if err := enc.Encode(r); err != nil {
-				log.Printf("*** Encode: %v", err)
-				break loop
+	{
+		ctx := ctx
+	loop:
+		for {
+			select {
+			case <-ctx.Done():
+				log.Printf("Received signal: %v", context.Cause(ctx))
+				// keep loop until 'res' is closed.
+				ctx = context.Background()
+			case r, ok := <-res:
+				if !ok {
+					break loop
+				}
+				if err := enc.Encode(r); err != nil {
+					log.Printf("*** Encode: %v", err)
+					break loop
+				}
 			}
 		}
+
 	}
-
-	cancel()
-
 }

@@ -11,7 +11,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/config v1.33.5
 	github.com/aws/aws-sdk-go-v2/service/dynamodb v1.69.0
 	github.com/aws/aws-sdk-go-v2/service/sts v1.51.0
-	github.com/aws/aws-xray-sdk-go v1.8.5
+	github.com/aws/aws-xray-sdk-go/v2 v2.0.4
 	github.com/aws/smithy-go v1.28.1
 	github.com/dop251/goja v0.0.0-20260915173639-b3fa02110dbd
 	github.com/dop251/goja_nodejs v0.0.0-20260212111938-1f56ff5bcf14

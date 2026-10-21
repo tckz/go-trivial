@@ -52,8 +52,8 @@ github.com/aws/aws-sdk-go-v2/service/ssooidc v1.43.0 h1:obhahQXDEdVEv8y5bTKXR30L
 github.com/aws/aws-sdk-go-v2/service/ssooidc v1.43.0/go.mod h1:6twZZ/aXHNy1vXUO8koUbp++MYzMASkOgEBdkbJYmO0=
 github.com/aws/aws-sdk-go-v2/service/sts v1.51.0 h1:Zpnqa6XtrNzXZnwbdCqHOXpXhMsa01ql/pcRQ1sb4hk=
 github.com/aws/aws-sdk-go-v2/service/sts v1.51.0/go.mod h1:/8JRcdTt//hG0Q4BTmGbuOplT7ABe+5rdtqUHqXvYIM=
-github.com/aws/aws-xray-sdk-go v1.8.5 h1:A/Gc733PHvARkjcAk+fw+0k2RT3O4VSZ+x/3YvAREfc=
-github.com/aws/aws-xray-sdk-go v1.8.5/go.mod h1:tDkyLXjXQ+9j49uUrFXhO9cPnpH7qp7PWkEON+KbbKs=
+github.com/aws/aws-xray-sdk-go/v2 v2.0.4 h1:m0hrFsoEftq9QLRjwkaEMuU6axO7KXjRQ2HDK1yLMv8=
+github.com/aws/aws-xray-sdk-go/v2 v2.0.4/go.mod h1:ycNGRtIXrqNyXmg+Py2Bbf/RZwZgzshlIWOsz1e3VGQ=
 github.com/aws/smithy-go v1.28.1 h1:R/nXH00c8qcfCzQVELtRw+eLQWtzv+VAIEFJ1/xxXlQ=
 github.com/aws/smithy-go v1.28.1/go.mod h1:YE2RhdIuDbA5E5bTdciG9KrW3+TiEONeUWCqxX9i1Fc=
 github.com/benbjohnson/clock v1.1.0/go.mod h1:J11/hYXuz8f4ySSvYwY0FKfm+ezbsZBKZxNJlLklBHA=
