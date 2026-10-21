@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"errors"
 	"flag"
 	"fmt"
 	"log"
@@ -27,6 +28,7 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+	defer lis.Close()
 
 	genJitter := func() time.Duration {
 		return 0
@@ -64,20 +66,25 @@ func main() {
 	srv := &http.Server{
 		Handler: m,
 	}
+	ctx, cancel := signal.NotifyContext(context.Background(), syscall.SIGINT)
+	defer cancel()
+
 	go func() {
-		if err := srv.Serve(lis); err != nil && err != http.ErrServerClosed {
+		defer cancel()
+		if err := srv.Serve(lis); err != nil && !errors.Is(err, http.ErrServerClosed) {
 			panic(err)
 		}
 	}()
 
-	sig := make(chan os.Signal)
-	signal.Notify(sig, syscall.SIGINT)
+	<-ctx.Done()
+	log.Printf("signal: %v", context.Cause(ctx))
 
-	s := <-sig
-	log.Printf("Received signal: %s", s)
-
-	ctx, cancel := context.WithTimeout(context.Background(), 2*time.Second)
-	srv.Shutdown(ctx)
-	cancel()
+	{
+		ctx, cancel := context.WithTimeout(context.Background(), 2*time.Second)
+		defer cancel()
+		if err := srv.Shutdown(ctx); err != nil {
+			log.Printf("Shutdown: %s", err)
+		}
+	}
 	log.Println("done")
 }
