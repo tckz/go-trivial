@@ -44,6 +44,7 @@ require (
 	go.uber.org/zap v1.28.0
 	golang.org/x/net v0.59.0
 	google.golang.org/grpc v1.83.2
+	gopkg.in/yaml.v2 v2.4.0
 	gorm.io/datatypes v1.2.7
 	gorm.io/driver/mysql v1.6.0
 	gorm.io/gorm v1.31.2
